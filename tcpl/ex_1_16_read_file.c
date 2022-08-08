@@ -5,15 +5,20 @@
 
 #define MAX_LINE_LENGTH 80
 
+void printArgv(char **argv)
+{
+    printf("Args count: %ld\n", sizeof argv);
+    for (int i = 0; i < sizeof argv; ++i)
+        printf("Args idx:%d arg:%s\n", i, argv[i]);
+}
+
 int main(int argc, char **argv)
 {
     char *path;
     char line[MAX_LINE_LENGTH] = {0};
     unsigned int line_count = 0;
 
-    printf("Args count: %ld\n", sizeof argv);
-    for (int i = 0; i < sizeof argv; ++i)
-        printf("Args idx:%d arg:%s\n", i, argv[i]);
+    printArgv(argv);
 
     if (argc < 1)
         return EXIT_FAILURE;
@@ -46,3 +51,4 @@ int main(int argc, char **argv)
         perror(path);
     }
 }
+
