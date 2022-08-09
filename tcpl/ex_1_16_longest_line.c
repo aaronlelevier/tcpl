@@ -5,6 +5,13 @@
 
 #define MAX_LINE_LENGTH 80
 
+char* path_join(char* path1, char* path2)
+{
+    // TODO: hardcoded?
+    char *separator = "/";
+    return strcat(strcat(path1, separator), path2);
+}
+
 int main(int argc, char **argv)
 {
     char *path;
@@ -21,9 +28,9 @@ int main(int argc, char **argv)
     printf("HOME: %s\n", getenv("HOME"));
 
     // TODO: how to join a file path
-
-
-    path = "/Users/aaron/Desktop/ch5-ex1-config.json";
+    path = path_join(getenv("HOME"), "Desktop/ch5-ex1-config.json");
+    // path = strcat(getenv("HOME"), "/Desktop/ch5-ex1-config.json");
+    // path = "/Users/aaron/Desktop/ch5-ex1-config.json";
 
     /* Open file */
     FILE *file = fopen(path, "r");
