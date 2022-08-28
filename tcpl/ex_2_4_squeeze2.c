@@ -19,28 +19,26 @@ int main(int argc, char **argv)
 
   squeeze(s, t);
 
-  printf("after: %s\n", s);
+  printf("after:  %s\n", s);
 }
 
-void squeeze(char s[], char t[])
+void squeeze(char s1[], char s2[])
 {
   int i, j, match;
 
-  for (i = j = 0; s[i] != '\0'; ++i)
+  for (i = j = 0; s1[i] != '\0'; ++i)
   {
     match = 0;
-    for (int k = 0; t[k] != '\0'; ++k)
+    for (int k = 0; s2[k] != '\0'; ++k)
     {
-      if (s[i] == t[k])
+      if (s1[i] == s2[k])
       {
-        // printf("s[i]%c, t[k]:%c\n", s[i], t[k]);
         match = 1;
       }
     }
-    // printf("match:%d j:%d, t[k]:%c\n", match, j, s[i]);
 
     if (!match)
-      s[j++] = s[i];
+      s1[j++] = s1[i];
   }
-  s[j] = '\0';
+  s1[j] = '\0';
 }
